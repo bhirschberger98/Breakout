@@ -2,39 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour {
+public class Ball : MonoBehaviour
+{
 
     public Vector2 startingVelocity = new Vector2(15, -20);
-    public GameObject gameOver;
     private Vector3 startingPosition;
+    public GameObject gameOver;
+
     int lives = 3;
-        void Start () {
+
+    void Start()
+    {
         startingPosition = transform.position;
         GetComponent<Rigidbody2D>().velocity = startingVelocity;
-	}
-	
-	void Update () {
-        if (transform.position.y <-3.5f){
+    }
+
+
+    void Update()
+    {
+        if (transform.position.y < -5.5f)
+        {
             GetOut();
         }
-        if (Input.GetButtonDown("jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2();
+            GetComponent<Rigidbody2D>().velocity = startingVelocity;
         }
-	}
-    void GetOut(){
-        Debug.Log("you are out");
+    }
+
+    void GetOut()
+    {
+        Debug.Log("You are out");
         lives = lives - 1;
+
         transform.position = startingPosition;
         GetComponent<Rigidbody2D>().velocity = new Vector2();
+
 
         if (lives == 0)
         {
             DoGameOver();
         }
     }
+
     void DoGameOver()
     {
         gameOver.SetActive(true);
-    } 
+    }
 }
