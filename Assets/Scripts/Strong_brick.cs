@@ -11,13 +11,14 @@ public class Strong_brick : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+	}
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        hit-=1;
         if (hit == 0)
         {
             gameObject.SetActive(false);
         }
-	}
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        hit = hit - 1;
     }
 }
