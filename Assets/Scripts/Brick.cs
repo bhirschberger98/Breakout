@@ -10,11 +10,12 @@ public class Brick : MonoBehaviour {
 	}
     void OnCollisionEnter2D(Collision2D coll)
     {
-        gameObject.SetActive(false);
-        hit -= 1;
+        hit = hit- 1;
+        Debug.Log(hit);
         if (hit == 0)
         {
             gameObject.SetActive(false);
+            FindObjectOfType<Ball>().Brick_break();
         }
     }
 }

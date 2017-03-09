@@ -7,8 +7,8 @@ public class Ball : MonoBehaviour
 
     public Vector2 startingVelocity = new Vector2(15, -20);
     private Vector3 startingPosition;
-    public GameObject gameOver;
-
+    public GameObject gameOversign;
+    public GameObject youwinsign;
     int lives = 3;
 
     void Start()
@@ -47,6 +47,14 @@ public class Ball : MonoBehaviour
 
     void DoGameOver()
     {
-        gameOver.SetActive(true);
+        gameOversign.SetActive(true);
+    }
+    public void Brick_break()
+    {
+        var bricks_left = FindObjectsOfType<Brick>().Length;
+        if (bricks_left == 0)
+        {
+            youwinsign.SetActive(true);
+        }
     }
 }
