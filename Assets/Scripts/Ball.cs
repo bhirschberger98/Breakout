@@ -20,7 +20,7 @@ public class Ball : MonoBehaviour
     {
         startingPosition = transform.position;
         GetComponent<Rigidbody2D>().velocity = startingVelocity;
-        livesValue.text = lives.ToString();
+        //livesValue.text = lives.ToString();
     }
 
 
