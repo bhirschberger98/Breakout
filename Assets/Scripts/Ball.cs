@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour
     {
         Debug.Log("You are out");
         lives = lives - 1;
-        livesValue.text = lives.ToString();
+        //livesValue.text = lives.ToString();
 
         transform.position = startingPosition;
         GetComponent<Rigidbody2D>().velocity = new Vector2();
@@ -60,7 +60,7 @@ public class Ball : MonoBehaviour
     {
         var bricks_left = FindObjectsOfType<Brick>().Length;
         points += 1;
-        pointsValue.text = points.ToString();
+        //pointsValue.text = points.ToString();
         if (bricks_left == 0)
         {
             youwinsign.SetActive(true);
