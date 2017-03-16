@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     private Vector3 startingPosition;
     public GameObject Game_Over;
     public GameObject youwinsign;
-    UnityEngine.UI.Text livesValue;
+    public Text livesValue;
     public Text pointsValue;
 
     int lives = 3;
@@ -20,18 +20,16 @@ public class Ball : MonoBehaviour
     {
         startingPosition = transform.position;
         GetComponent<Rigidbody2D>().velocity = startingVelocity;
-        //livesValue.text = lives.ToString();
+        livesValue.text = lives.ToString();
     }
 
 
     void Update()
     {
-        if (transform.position.y < -5.5f)
-        {
+        if (transform.position.y < -5.5f){
             GetOut();
         }
-        if (Input.GetButtonDown("Jump"))
-        {
+        if (Input.GetButtonDown("Jump")){
             GetComponent<Rigidbody2D>().velocity = startingVelocity;
         }
     }
@@ -40,14 +38,11 @@ public class Ball : MonoBehaviour
     {
         Debug.Log("You are out");
         lives = lives - 1;
-        //livesValue.text = lives.ToString();
+        livesValue.text = lives.ToString();
 
         transform.position = startingPosition;
         GetComponent<Rigidbody2D>().velocity = new Vector2();
-
-
-        if (lives == 0)
-        {
+        if (lives == 0){
             DoGameOver();
         }
     }
@@ -56,14 +51,13 @@ public class Ball : MonoBehaviour
     {
         Game_Over.SetActive(true);
     }
-    public void Brick_break()
+    public void Brick_break(int worth)
     {
+        points += worth;
         var bricks_left = FindObjectsOfType<Brick>().Length;
         var Mbricks_left = FindObjectsOfType<Magic_Brick>().Length;
-        points += 1;
-        //pointsValue.text = points.ToString();
-        if (bricks_left+ Mbricks_left == 0)
-        {
+        pointsValue.text = points.ToString();
+        if (bricks_left+ Mbricks_left == 0){
             youwinsign.SetActive(true);
         }
     }
