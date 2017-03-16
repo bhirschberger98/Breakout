@@ -59,9 +59,10 @@ public class Ball : MonoBehaviour
     public void Brick_break()
     {
         var bricks_left = FindObjectsOfType<Brick>().Length;
+        var Mbricks_left = FindObjectsOfType<Magic_Brick>().Length;
         points += 1;
         //pointsValue.text = points.ToString();
-        if (bricks_left == 0)
+        if (bricks_left+ Mbricks_left == 0)
         {
             youwinsign.SetActive(true);
         }

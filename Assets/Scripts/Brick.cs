@@ -6,8 +6,9 @@ public class Brick : MonoBehaviour {
     public int hit = 1;
     // Use this for initialization
     void Start () {
-		
-	}
+        startingPosition = transform.position;
+        GetComponent<Rigidbody2D>().velocity = startingVelocity;
+    }
     void OnCollisionEnter2D(Collision2D coll)
     {
         hit = hit- 1;
